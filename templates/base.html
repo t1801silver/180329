@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>{% block title %}t1801starters{% endblock %}</title>
+
+{% load staticfiles %}
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="../static/jquery/jquery.min.js"></script>
+  <script src="../static/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "css/base.css" %}{% endblock %}" />
+  <link rel="stylesheet" type="text/css" href="{% block extrastyle %}{% endblock %}" />
+
+
+</head>
+
+
+<body>
+  <div class="topbar">
+    <ul class="nav justify-content-end fixed-top" id="topbar">
+    {% if user.is_active %}
+
+    <span class="navbar-text">{% firstof user.get_short_name user.get_username %} 스타터 &nbsp;&nbsp;&nbsp;</span>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        마이페이지
+      </a>
+      <div class="dropdown-menu dropdown-menu-right justify-content-center" aria-labelledby="navbarDropdownMyPage">
+        <a class="dropdown-item" href="#">회원정보수정</a>
+        <a class="dropdown-item" href="#">찜하기</a>
+        <a class="dropdown-item" href="#">멘토링</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">장바구니</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'logout' %}">로그아웃</a>
+    </li>
+
+    {% else %}
+
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'login' %}">로그인</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'register' %}">회원가입</a>
+    </li>
+
+    </ul>
+    {% endif %}
+
+  </div>
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top " id="bgbg">
+      <div class="container">
+          <a class="navbar-brand" href="{% url 'home' %}">
+          <!-- <img src="static/img/LOGOSS.png" alt="Logo" style="width:50px;"> -->
+          STARTERS</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarResponsive">
+          <ul class="navbar-nav ml-left">
+
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCompany" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  스타터스
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMyPage">
+                  <a class="dropdown-item" href="{% url 'blog:index' %}">사이트소개</a>
+                  <a class="dropdown-item" href="{% url 'blog:index' %}">팀소개</a>
+                  <a class="dropdown-item" href="{% url 'blog:index' %}">이용방법</a>
+                </div>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  취업
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMyPage">
+                  <a class="dropdown-item" href="{% url 'blog:index' %}">멘토</a>
+                  <a class="dropdown-item" href="{% url 'blog:index' %}">추천멘토</a>
+                  <a class="dropdown-item" href="{% url 'blog:index' %}">우수사례</a>
+                </div>
+              </li>
+
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  서비스
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMyPage">
+                  <a class="dropdown-item" href="{% url 'blog:index' %}">1?</a>
+                  <a class="dropdown-item" href="{% url 'blog:index' %}">2?</a>
+                  <a class="dropdown-item" href="{% url 'blog:index' %}">3?</a>
+                </div>
+              </li>
+
+              <li class="nav-item">
+                  <a class="nav-link" href="#">포트폴리오</a>
+                </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  커넥트
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMyPage">
+                  <a class="dropdown-item" href="{% url 'blog:index' %}">공지사항</a>
+                  <a class="dropdown-item" href="{% url 'blog:index' %}">커뮤니티</a>
+                  <a class="dropdown-item" href="{% url 'blog:index' %}">고객센터</a>
+                </div>
+              </li>
+
+
+              {% if user.is_active %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">스타터스
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMyPage">
+                  <a class="dropdown-item" href="{% url 'team:topic' %}">주제</a>
+                  <a class="dropdown-item" href="{% url 'team:member' %}">팀소개</a>
+                  <a class="dropdown-item" href="{% url 'team:settings' %}">개발환경</a>
+                  <a class="dropdown-item" href="{% url 'plan:index' %}">설계</a>
+                  <a class="dropdown-item" href="{% url 'team:sitemap' %}">사이트맵</a>
+                  <a class="dropdown-item" href="{% url 'design:index' %}">디자인</a>
+                  <a class="dropdown-item" href="{% url 'progress:index' %}">진척사항</a>
+                </div>
+              </li>
+              {% endif %}
+
+
+            </ul>
+          </ul>
+        </div>
+      </div>
+
+
+    </nav>
+{% block content %}
+
+<div class="contentwh">
+{% endblock %}
+
+</div>
+
+{% block footer %}
+{% endblock %}
+
+</body>
+</html>

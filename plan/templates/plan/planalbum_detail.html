@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}1조 블로그{% endblock %}
+
+{% load staticfiles %}
+{% block extrastyle %}{% static "photo/photo.css" %}{% endblock %}
+
+{% block content %}
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="../static/jquery/jquery.min.js"></script>
+  <script src="../static/bootstrap/js/bootstrap.bundle.min.js"></script>
+<div id="content">
+
+    <h2 style="display:inline-block">{{ object.name }}</h2>
+    &emsp;<b><i>{{ object.description }}</i></b>
+
+<div class="button">
+  <a href="{% url 'plan:index' %}" class="btn btn-primary" role="button">앨범 목록</a>
+</div>
+
+    <hr/>
+
+    <div class="album-detail">
+        {% for photo in object.planphoto_set.all %}
+        <div class="album-detail-photo">
+            <a href="{{ photo.get_absolute_url }}">
+            <img class="thumbnail" src="{{ photo.image.thumb_url }}" />
+            </a>
+            <li>{{ photo.title }}</li>
+            <li>{{ photo.upload_date|date:"Y-m-d" }}</li>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

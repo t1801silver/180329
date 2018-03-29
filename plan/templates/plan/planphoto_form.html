@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}1조 블로그{% endblock %}
+
+{% load staticfiles %}
+{% block extrastyle %}{% static "css/forms.css" %}{% endblock %}
+
+{% block content %}
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="../static/jquery/jquery.min.js"></script>
+  <script src="../static/bootstrap/js/bootstrap.bundle.min.js"></script>
+<div id="content">
+
+    <h1>사진 생성/업데이트 - {{user}}</h1>
+
+    {% if form.is_multipart %}
+    <form enctype="multipart/form-data" method="post" action=".">
+    {% else %}
+    <form method="post" action=".">
+    {% endif %}
+    {% csrf_token %}
+
+    {% if form.errors %}
+    <p class="errornote">Wrong! Please correct the error(s) below.</p>
+    {% endif %}
+
+    <p>생성 또는 업데이트를 할 수 있는 곳입니다.</p>
+
+    <fieldset class="aligned">
+
+        <div class="form-row">
+            {{ form.image.label_tag }} {{ form.image }}
+        </div>
+
+        <div class="form-row">
+            {{ form.album.label_tag }} {{ form.album }}
+            <button type="button"><a href="{% url 'plan:album_add' %}">앨범 추가하기</a></button>
+        </div>
+
+        <div class="form-row">
+            {{ form.title.label_tag }} {{ form.title }}
+        </div>
+
+        <div class="form-row">
+            {{ form.description.label_tag }} {{ form.description }}
+        </div>
+
+    </fieldset>
+
+    <div class="submit-row">
+        <button type="submit" class="btn btn-default">사진 생성</button>
+    </div>
+
+    <script type="text/javascript">document.getElementById('id_album').focus();</script>
+
+    </form>
+
+</div>
+{% endblock %}

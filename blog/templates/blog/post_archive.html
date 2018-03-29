@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}1조 블로그{% endblock %}
+
+{% block content %}
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="../static/jquery/jquery.min.js"></script>
+  <script src="../static/bootstrap/js/bootstrap.bundle.min.js"></script>
+<div id="content">
+
+<h1>{% now "N d, Y" %}까지의 포스트 아카이브</h1>
+<ul>
+    {% for date in date_list %}
+    <li class="no" style="display: inline;">
+        <a href="{% url 'blog:post_year_archive' date|date:'Y' %}">Year</a></li>
+    {% endfor %}
+</ul>
+<br/>
+
+<div>
+    <ul>
+        {% for post in object_list %}
+        <li class="no">{{ post.modify_date|date:"Y-m-d" }}&nbsp;&nbsp;&nbsp;
+        <a href="{{ post.get_absolute_url }}"><strong>{{ post.title }}</strong></a></li>
+        {% endfor %}
+    </ul>
+</div>
+
+</div>
+
+{% endblock %}

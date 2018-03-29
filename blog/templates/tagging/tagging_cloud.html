@@ -1,0 +1,25 @@
+
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="../static/jquery/jquery.min.js"></script>
+  <script src="../static/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<div id="content">
+
+<h1>Blog Tag Cloud</h1>
+
+<div class="tag-cloud">
+    {% load tagging_tags %}
+    {% tag_cloud_for_model blog.Post as tags with steps=6 min_count=1 distribution=log %}
+    {% for tag in tags %}
+    <span class="tag-{{tag.font_size}}">
+        <a href="{% url 'blog:tagged_object_list' tag.name %}">{{tag.name}}({{tag.font_size}})</a>
+    </span>
+    {% endfor %}
+</div>
+
+</div>
+{% endblock %}

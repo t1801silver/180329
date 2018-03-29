@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}1조 블로그{% endblock %}
+
+{% block content %}
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="../static/jquery/jquery.min.js"></script>
+  <script src="../static/bootstrap/js/bootstrap.bundle.min.js"></script>
+<div id="content">
+
+    <h1>사진 변경 - {{user}}</h1>
+
+    <table class="change-list table-striped">
+        <tr>
+            <th>앨범</th>
+            <th>제목</th>
+            <th>설명</th>
+            <th>작성자</th>
+            <th>업데이트</th>
+            <th>삭제</th>
+        </tr>
+
+        {% for item in object_list %}
+        <tr>
+            <td>{{ item.album }}</td>
+            <td>{{ item.title }}</td>
+            <td>{{ item.description|linebreaks }}</td>
+            <td>{{ item.owner }}</td>
+            <td><a href="{% url 'design:photo_update' item.id %}">업데이트</a></td>
+            <td><a href="{% url 'design:photo_delete' item.id %}">삭제</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+{% endblock %}

@@ -1,0 +1,101 @@
+/*!
+ * Start Bootstrap - Modern Business (https://startbootstrap.com/template-overviews/modern-business)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-logomodern-business-nav/blob/master/LICENSE)
+ */
+
+ ul#topbar {
+     position: absolute;
+     top: 0;
+     right: 0;
+     left: 0;
+     z-index: 1030;
+ }
+
+ .navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
+     color: #feca02;
+ }
+
+
+.navbar-dark {
+     background-color: #212931;
+ }
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #eee;
+    font-weight: 600;
+    font-size: 14px;
+    padding-right: .5rem;
+    padding-left: .5rem;
+}
+
+
+@media (min-width: 992px) {
+
+    .navbar-dark .navbar-nav .nav-link {
+        color: #ddd;
+        font-size: 20px;
+        font-weight: 600;
+        padding: 0 .9rem;
+    }
+
+  .navbar-dark .navbar-brand {
+      color: #ddd;
+      font-size: 30px;
+      font-weight: 900;
+  }
+}
+
+@media (min-width:771px) and (max-width: 991px) {
+  .navbar-dark .navbar-brand {
+      color: #ddd;
+      font-size: 30px;
+      font-weight: 900;
+  }
+
+}
+
+@media (min-width:550px) and (max-width: 770px) {
+  .navbar-dark .navbar-brand {
+      color: #ddd;
+      font-size: 20px;
+      font-weight: 900;
+  }
+  .navbar-dark .navbar-nav .nav-link {
+      color: #ddd;
+      font-size: 10px;
+      padding: 0 .3rem;
+  }
+}
+
+@media (max-width:549px){
+  .navbar-dark .navbar-brand {
+      font-weight: 900;
+  }
+}
+.topbar {
+    height: 40px;
+    background: #feca01;
+    font-size: 15px;
+    margin-bottom: 0px;
+    width: 100%;
+
+}
+
+.topbar .nav-link {
+    display: block;
+    padding: .5rem .2rem;
+    color: #000;
+    font-size: 15px;
+}
+
+.topbar .nav-link:hover {
+    color: #fff;
+}
+
+/* 로그인 했을 때 ~~~님 부분 */
+.navbar-dark .navbar-text {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+}
